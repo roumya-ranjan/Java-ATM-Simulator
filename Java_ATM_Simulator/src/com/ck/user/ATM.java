@@ -1,6 +1,7 @@
 package com.ck.user;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class ATM {
 			//Instantiating the given ATMCard class
 			//Object obj = cls.newInstance();
 			
-			Constructor paramConstructor =cls.getDeclaredConstructor(long.class , String.class, double.class);
+			Constructor paramConstructor = cls.getDeclaredConstructor(long.class, String.class, double.class);
 			Object obj = paramConstructor.newInstance(1234, "CK", 10000);
 		
 			//checking whether the loaded class is ATMCard type or not
@@ -102,7 +103,7 @@ public class ATM {
 				}//switch
 				
 			}//while
-			}
+	
 			
 		}catch (ClassNotFoundException e) {
 			throw new InvalidCardException(cardName + ".class is not found"); 
@@ -112,6 +113,13 @@ public class ATM {
 			
 		}catch(IllegalAccessException e) {
 			throw new InvalidCardException("No-param constructor is not public");
+			
+		}catch(NoSuchMethodException e1) {
+			throw new InvalidCardException("Param constructor is not available");
+			
+		}catch (InvocationTargetException e1) {
+			throw new InvalidCardException("Param constructor is not available");
+			
 		}
 	}
 }
