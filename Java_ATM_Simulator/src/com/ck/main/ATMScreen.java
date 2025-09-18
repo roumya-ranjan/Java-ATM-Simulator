@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.ck.exception.InvalidCardException;
 import com.ck.user.ATM;
 
-public class ATMAcreen {
+public class ATMScreen {
 
 	public static void main(String [] args) {
 		Scanner scn = new Scanner (System.in);
